@@ -1,17 +1,25 @@
 #ifndef _LIST_H
 #define _LIST_H
 
+
+template <class Item>
+struct Node{
+  Item data;
+  Node* next;
+  Node* prev;
+};
+
 template <class Item>
 class List{
  public:
   List();
 
-  void deep_copy_from(List& copyme);
+  void deep_copy_from(List<Item>& copyme);
   void clean_up();
   
   ~List();
-  List operator=(List& rside);
-  List(List& orig);
+  List operator=(List<Item>& rside);
+  List(List<Item>& orig);
   
   Item head() const;
   Item tail() const;
@@ -20,15 +28,8 @@ class List{
   Item pop_back();
   Item pop_front();
  private:
-  Node* head;
-  Node* tail;
+  Node<Item>* list_head;
+  Node<Item>* list_tail;
 };
-
-template <class Item>
-struct Node{
-  Item data;
-  Node* next;
-  Node* prev;
-}
 
 #endif
